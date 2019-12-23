@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import StarRating from '../StarRating';
 
 const MovieCard = (props) => (
+
     <div className="movie-card">
         <div className="movie-card card">
             <img className="card-img-top" src={props.movie.imageUrl} alt="" />
@@ -15,7 +16,7 @@ const MovieCard = (props) => (
             <div className="card-footer">
                 <div className="clearfix">
                     <div className="float-left mt-1">
-                        <StarRating rating={props.movie.rating} />
+                        <StarRating rating={props.movie.rating} rate={props.rate} movieId={props.movie.id}/>
                     </div>
                     <div className="card-footer-badge float-right badge badge-primary badge-pill">{props.movie.rating}</div>
                 </div>
@@ -30,7 +31,8 @@ MovieCard.defaultProps = {
 
 MovieCard.propTypes = {
     movie: PropTypes.object,
-    delete: PropTypes.func
+    delete: PropTypes.func,
+    rate : PropTypes.func
 };
 
 export default MovieCard;

@@ -26,17 +26,17 @@ const cropWidth = (rating) => {
 const StarRating = (props) => {
 
     const containerStyle = { width: `${cropWidth(props.rating)}px` };
-
+    
     return (
         <div>
             <div style={styles.starsOuter}>
                 <div style={containerStyle}>
                     <div style={styles.starsEmptyInner}>
-                        <i className="fa fa-star-o fa-lg" style={styles.star}></i>
-                        <i className="fa fa-star-o fa-lg" style={styles.star}></i>
-                        <i className="fa fa-star-o fa-lg" style={styles.star}></i>
-                        <i className="fa fa-star-o fa-lg" style={styles.star}></i>
-                        <i className="fa fa-star-o fa-lg" style={styles.star}></i>
+                        <i onClick={() => props.rate(1, props.movieId)}className="fa fa-star-o fa-lg" style={styles.star}></i>
+                        <i onClick={() => props.rate(2, props.movieId)}className="fa fa-star-o fa-lg" style={styles.star}></i>
+                        <i onClick={() => props.rate(3, props.movieId)}className="fa fa-star-o fa-lg" style={styles.star}></i>
+                        <i onClick={() => props.rate(4, props.movieId)}className="fa fa-star-o fa-lg" style={styles.star}></i>
+                        <i onClick={() => props.rate(5, props.movieId)}className="fa fa-star-o fa-lg" style={styles.star}></i>
                     </div>
                     <div style={styles.starsInner}>
                         <i className="fa fa-star fa-lg" style={styles.star}></i>
@@ -56,7 +56,9 @@ StarRating.defaultProps = {
 };
 
 StarRating.propTypes = {
-    rating: PropTypes.number
+    rating: PropTypes.number,
+    rate: PropTypes.func,
+    movieId: PropTypes.number
 };
 
 export default StarRating;

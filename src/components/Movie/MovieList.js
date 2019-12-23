@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MovieCard from './MovieCard';
 
-const getMovies = (movies, deleteFunction) => {
+const getMovies = (movies, deleteFunction, rate) => {
     return (
         <div className="card-deck">
             {
-                movies.map(movie => <MovieCard key={movie.id} movie={movie} delete={deleteFunction} />)
+                movies.map(movie => <MovieCard key={movie.id} movie={movie} delete={deleteFunction} rate={rate}/>)
             }
         </div>
     );
@@ -14,7 +14,7 @@ const getMovies = (movies, deleteFunction) => {
 
 const MovieList = (props) => (
     <div>
-        {getMovies(props.movies, props.delete)}
+        {getMovies(props.movies, props.delete, props.rate)}
     </div>
 );
 
@@ -24,7 +24,8 @@ MovieList.defaultProps = {
 
 MovieList.propTypes = {
     movies: PropTypes.array,
-    delete: PropTypes.func
+    delete: PropTypes.func,
+    rate : PropTypes.func
 };
 
 

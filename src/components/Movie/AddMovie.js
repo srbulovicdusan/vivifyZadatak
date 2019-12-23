@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import '../../styles/components/_AddMovie.css';
-
+import {
+    BrowserRouter as 
+    Route,
+    Link
+} from 'react-router-dom';
 
 export default class AddMovie extends Component {
 
@@ -20,7 +24,6 @@ export default class AddMovie extends Component {
     }
     
     onChangeHandler  (event){
-        console.log(event.target.value);
         if (event.target.name === 'url'){
             this.setState({url : event.target.value});
         }else if (event.target.name === 'naslov'){
@@ -45,17 +48,16 @@ export default class AddMovie extends Component {
 
     
     invalidData(){
-        if (this.state.naslov === '' && this.state.url === '' && this.state.podnaslov === '' && this.state.opis === ''){
+        if (this.state.naslov === '' || this.state.url === '' || this.state.podnaslov === '' || this.state.opis === ''){
             return true;
         }else{
             return false;
         }
     }
     onSubmit (){
-        console.log('usao');
         if (this.invalidData() == false){
             var movie = {
-                id : 6000,
+                id : Math.floor(Math.random() * 100000),
                 title : this.state.naslov,
                 subtitle : this.state.podnaslov,
                 description : this.state.opis,
@@ -69,6 +71,7 @@ export default class AddMovie extends Component {
             }
             movies.push(movie);
             localStorage.setItem('movies', JSON.stringify(movies));
+            alert('Uspesno dodat film');
         }
     }
     render() {
@@ -76,6 +79,12 @@ export default class AddMovie extends Component {
         
         return (
             <div  className="forma" style={{marginLeft: '-15px'}}>
+                <Route path="/">
+                    
+                    <Link to="/">Home</Link>
+                    
+                    
+                </Route>
                 <h1>Dodavanje filma</h1>
                 <div >
                     <h2>Url do slike</h2>                    
