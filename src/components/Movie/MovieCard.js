@@ -10,6 +10,7 @@ const MovieCard = (props) => (
                 <h4 className="card-title">{props.movie.title}</h4>
                 <h6 className="card-subtitle mb-2 text-muted">{props.movie.subtitle}</h6>
                 <p className="text-justify" style={{fontSize: '14px'}}>{props.movie.description}</p>
+                <button onClick={() => props.delete(props.movie.id)}>delete</button>
             </div>
             <div className="card-footer">
                 <div className="clearfix">
@@ -28,7 +29,8 @@ MovieCard.defaultProps = {
 };
 
 MovieCard.propTypes = {
-    movie: PropTypes.object
+    movie: PropTypes.object,
+    delete: PropTypes.func
 };
 
 export default MovieCard;

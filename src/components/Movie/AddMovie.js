@@ -60,7 +60,8 @@ export default class AddMovie extends Component {
                 subtitle : this.state.podnaslov,
                 description : this.state.opis,
                 year : 2016,
-                url : this.state.url
+                url : this.state.url,
+                rating : 0.0
             };
             var movies = JSON.parse(localStorage.getItem('movies'));
             if (movies == null){
