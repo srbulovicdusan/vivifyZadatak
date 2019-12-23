@@ -14,6 +14,7 @@ export default class Movies extends Component {
 
     componentDidMount() {
         this.setState(() => ({ movies: MovieService.getMovies() }));
+        
     }
 
     render() {
